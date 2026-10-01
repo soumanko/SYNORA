@@ -1,9 +1,10 @@
 from typing import List, Dict, Any
-from core.taxonomy.schemas import Dimension, FeatureValue, Feature
+from core.taxonomy.schemas import Dimension, FeatureValue, Feature, FeatureType
 
 class DimensionAnalyzer:
     """
     Analyzes a specific narrative dimension using an LLM to extract features.
+    Constructs taxonomy-constrained schemas so the LLM is prompted with valid value sets.
     """
     
     def __init__(self, dimension: Dimension, features: List[Feature], llm_provider: Any):
@@ -11,12 +12,63 @@ class DimensionAnalyzer:
         self.features = features
         self.llm_provider = llm_provider
         
+    def _build_constrained_schema(self) -> Dict[str, Any]:
+        """
+        Builds a JSON schema that constrains extraction output to valid taxonomy values.
+        Uses enum constraints for categorical/binary/ordinal, items.enum for multi-select,
+        and numeric bounds for scale features.
+        """
+        schema = {}
+        for f in self.features:
+            allowed_values = [str(v) for v in f.values] if f.values else []
+            
+            if f.type == FeatureType.CATEGORICAL or f.type == FeatureType.BINARY:
+                schema[f.id] = {
+                    "type": "string",
+                    "enum": allowed_values,
+                    "description": f"{f.name}: {f.question}"
+                }
+            elif f.type == FeatureType.MULTI_SELECT:
+                schema[f.id] = {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": allowed_values
+                    },
+                    "description": f"{f.name}: {f.question}. Select all that apply from the allowed values."
+                }
+            elif f.type == FeatureType.SCALE:
+                # Extract numeric bounds
+                try:
+                    bounds = [float(str(v).strip().split(" ")[0]) for v in f.values]
+                    min_val, max_val = int(min(bounds)), int(max(bounds))
+                except (ValueError, TypeError):
+                    min_val, max_val = 1, 5
+                schema[f.id] = {
+                    "type": "integer",
+                    "minimum": min_val,
+                    "maximum": max_val,
+                    "description": f"{f.name}: {f.question}. Provide an integer from {min_val} to {max_val}."
+                }
+            elif f.type == FeatureType.ORDINAL:
+                schema[f.id] = {
+                    "type": "string",
+                    "enum": allowed_values,
+                    "description": f"{f.name}: {f.question}"
+                }
+            else:
+                schema[f.id] = {
+                    "type": "string",
+                    "description": f"{f.name}: {f.question}"
+                }
+        return schema
+        
     def analyze(self, text: str) -> List[FeatureValue]:
         """
         Analyzes the text for features belonging to this dimension.
-        Constructs a structured analysis prompt, validates output, and extracts evidence.
+        Constructs a taxonomy-constrained schema, validates output.
         """
-        schema = {f.id: {"value": f.type, "confidence": 1.0, "evidence": [{"text": "snippet", "start": 0, "end": 1, "reason": "reason"}]} for f in self.features}
+        schema = self._build_constrained_schema()
         try:
             raw_json = self.llm_provider.get_structured_output(text, schema)
             from core.extraction.structured_output import StructuredOutputValidator

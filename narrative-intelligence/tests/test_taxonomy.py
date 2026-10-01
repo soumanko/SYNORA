@@ -7,16 +7,26 @@ from pathlib import Path
 
 @pytest.fixture
 def mock_taxonomy_file():
-    mock_data = [
-        {
-            "id": "F001",
-            "name": "Protagonist Name",
-            "dimension": "Agents",
-            "question": "What is the name of the protagonist?",
-            "type": "categorical",
-            "values": ["Named", "Unnamed"]
+    mock_data = {
+        "feature_taxonomy": {
+            "agents": {
+                "dimension_name": "Agents",
+                "aspects": {
+                    "protagonist": {
+                        "features": [
+                            {
+                                "id": "F001",
+                                "name": "Protagonist Name",
+                                "question": "What is the name of the protagonist?",
+                                "type": "categorical",
+                                "values": ["Named", "Unnamed"]
+                            }
+                        ]
+                    }
+                }
+            }
         }
-    ]
+    }
     with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.json') as f:
         json.dump(mock_data, f)
         temp_path = f.name
