@@ -102,7 +102,7 @@ class ForgeOrchestrator:
             analysis_metadata=meta_0
         ))
 
-        if meta_0["status"] != "success":
+        if meta_0["status"] != "success" or prof_0 is None:
             state.status = "stopped"
             state.stop_reason = "analysis_failed"
             return state
@@ -150,7 +150,7 @@ class ForgeOrchestrator:
                 analysis_metadata=meta_n
             ))
             
-            if meta_n["status"] != "success":
+            if meta_n["status"] != "success" or current_profile is None or prof_n is None:
                 state.status = "stopped"
                 state.stop_reason = "analysis_failed"
                 break
