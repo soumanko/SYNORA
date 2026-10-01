@@ -40,7 +40,7 @@ export default function NarrativeRadar({ scores }: NarrativeRadarProps) {
               tick={{ fill: '#4b5563', fontSize: 12 }} 
             />
             <Tooltip 
-              formatter={(value: number) => [`${value.toFixed(1)}%`, 'Activity']}
+              formatter={(value: any) => [`${Number(value).toFixed(1)}%`, 'Activity']}
               contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
             />
             <Radar

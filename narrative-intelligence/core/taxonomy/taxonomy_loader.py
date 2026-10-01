@@ -20,9 +20,21 @@ class TaxonomyLoader:
         with open(self.taxonomy_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
             
-        for feature_data in data:
-            feature = Feature(**feature_data)
-            self.features[feature.id] = feature
+        feature_taxonomy = data.get("feature_taxonomy", {})
+        for dim_key, dim_data in feature_taxonomy.items():
+            dimension_name = dim_data.get("dimension_name")
+            aspects = dim_data.get("aspects", {})
+            for aspect_key, aspect_data in aspects.items():
+                for feature_data in aspect_data.get("features", []):
+                    # Inject dimension if missing
+                    if "dimension" not in feature_data:
+                        feature_data["dimension"] = dimension_name
+                    
+                    if feature_data.get("type") == "multi_select":
+                        feature_data["type"] = "multi-select"
+                        
+                    feature = Feature(**feature_data)
+                    self.features[feature.id] = feature
             
         return self.features
 

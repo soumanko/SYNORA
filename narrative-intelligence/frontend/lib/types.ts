@@ -35,8 +35,14 @@ export interface NarrativeProfile {
   metadata: Record<string, any>;
 }
 
+export interface ErrorDetail {
+  code: string;
+  message: string;
+}
+
 export interface AnalyzeResponse {
   status: string;
+  error?: ErrorDetail;
   narrative_profile?: NarrativeProfile;
   executive_summary?: string;
   message?: string;
