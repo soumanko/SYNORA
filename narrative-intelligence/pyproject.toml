@@ -1,0 +1,29 @@
+[project]
+name = "narrative-intelligence"
+version = "0.1.0"
+description = "Narrative Intelligence Engine featuring Narrative Forge and Narrative Lens"
+authors = [
+    {name = "AI Architect"}
+]
+dependencies = [
+    "pydantic>=2.0.0",
+    "fastapi>=0.100.0",
+    "uvicorn>=0.23.0",
+    "pandas>=2.0.0",
+    "xgboost>=2.0.0",
+    "scikit-learn>=1.3.0",
+    "litellm>=1.0.0" # for multi-provider LLM abstraction
+]
+requires-python = ">=3.10"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["agents", "api", "core"]

@@ -1,0 +1,26 @@
+{
+  "binary_full.json": {
+    "status": "passed",
+    "feature_count": 462,
+    "num_class": 0,
+    "has_feature_names": true
+  },
+  "binary_narrative.json": {
+    "status": "passed",
+    "feature_count": 410,
+    "num_class": 0,
+    "has_feature_names": true
+  },
+  "multiclass_full.json": {
+    "status": "passed",
+    "feature_count": 462,
+    "num_class": 6,
+    "has_feature_names": true
+  },
+  "multiclass_narrative.json": {
+    "status": "passed",
+    "feature_count": 410,
+    "num_class": 6,
+    "has_feature_names": true
+  }
+}

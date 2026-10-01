@@ -1,0 +1,251 @@
+{
+  "version": "storyscope-core30-approximation-v1",
+  "k": 30,
+  "method": "XGBoost split-frequency approximation. This is not equivalent to the StoryScope SHAP analysis.",
+  "source_commit": "main",
+  "source_model": "binary_full.json",
+  "dataset": "binary_full.json",
+  "seed": 42,
+  "features": [
+    {
+      "id": "REV_SUS_001",
+      "rank": 1,
+      "importance": 22893,
+      "stability": 0.0,
+      "dimension": "Revelation",
+      "name": "Global Withholding Intensity"
+    },
+    {
+      "id": "SOC_REL_007",
+      "rank": 2,
+      "importance": 425,
+      "stability": 0.0,
+      "dimension": "Social Networks",
+      "name": "Range of Relationship Types Present"
+    },
+    {
+      "id": "SIT_MET_202",
+      "rank": 3,
+      "importance": 349,
+      "stability": 0.0,
+      "dimension": "Situatedness",
+      "name": "Intertextual Strategy Types"
+    },
+    {
+      "id": "STY_CPX_012",
+      "rank": 4,
+      "importance": 327,
+      "stability": 0.0,
+      "dimension": "Style",
+      "name": "Sentence-structure repertoire"
+    },
+    {
+      "id": "PLT_THM_004",
+      "rank": 5,
+      "importance": 318,
+      "stability": 0.0,
+      "dimension": "Plot",
+      "name": "Thematic Domains"
+    },
+    {
+      "id": "STY_ALL_018",
+      "rank": 6,
+      "importance": 307,
+      "stability": 0.0,
+      "dimension": "Style",
+      "name": "Allusion domain diversity"
+    },
+    {
+      "id": "AGENT_ATTR_001",
+      "rank": 7,
+      "importance": 258,
+      "stability": 0.0,
+      "dimension": "Agents",
+      "name": "Dominant mode of introducing the central character"
+    },
+    {
+      "id": "PLT_MOR_007",
+      "rank": 8,
+      "importance": 227,
+      "stability": 0.0,
+      "dimension": "Plot",
+      "name": "Post-Climax Denouement Length"
+    },
+    {
+      "id": "SET_ATM_017",
+      "rank": 9,
+      "importance": 224,
+      "stability": 0.0,
+      "dimension": "Setting",
+      "name": "Dominant Sensory Modalities"
+    },
+    {
+      "id": "STY_FIG_001",
+      "rank": 10,
+      "importance": 223,
+      "stability": 0.0,
+      "dimension": "Style",
+      "name": "Figurative Device Density"
+    },
+    {
+      "id": "STY_ALL_015",
+      "rank": 11,
+      "importance": 223,
+      "stability": 0.0,
+      "dimension": "Style",
+      "name": "Lexical register and consistency"
+    },
+    {
+      "id": "SIT_MET_303",
+      "rank": 12,
+      "importance": 222,
+      "stability": 0.0,
+      "dimension": "Situatedness",
+      "name": "Thematic Explicitness and Moralizing"
+    },
+    {
+      "id": "AGENT_MOT_012",
+      "rank": 13,
+      "importance": 220,
+      "stability": 0.0,
+      "dimension": "Agents",
+      "name": "Typical motivation domains for major characters"
+    },
+    {
+      "id": "SET_ATM_004",
+      "rank": 14,
+      "importance": 210,
+      "stability": 0.0,
+      "dimension": "Setting",
+      "name": "Dominant Setting Mood Qualities"
+    },
+    {
+      "id": "AGENT_EMO_002",
+      "rank": 15,
+      "importance": 209,
+      "stability": 0.0,
+      "dimension": "Agents",
+      "name": "Modes of conveying the central character's emotions"
+    },
+    {
+      "id": "SET_ATM_020",
+      "rank": 16,
+      "importance": 204,
+      "stability": 0.0,
+      "dimension": "Setting",
+      "name": "Atmospheric Construction Techniques"
+    },
+    {
+      "id": "AGENT_ATTR_024",
+      "rank": 17,
+      "importance": 204,
+      "stability": 0.0,
+      "dimension": "Agents",
+      "name": "Density of figurative language in character depiction"
+    },
+    {
+      "id": "AGENT_MOT_003",
+      "rank": 18,
+      "importance": 198,
+      "stability": 0.0,
+      "dimension": "Agents",
+      "name": "Dominant sources of motivation"
+    },
+    {
+      "id": "PLT_THM_006",
+      "rank": 19,
+      "importance": 192,
+      "stability": 0.0,
+      "dimension": "Plot",
+      "name": "Dominant Narrative Archetype"
+    },
+    {
+      "id": "EVT_CAU_017",
+      "rank": 20,
+      "importance": 188,
+      "stability": 0.0,
+      "dimension": "Events",
+      "name": "Event Novelty Orientation"
+    },
+    {
+      "id": "AGENT_EMO_012",
+      "rank": 21,
+      "importance": 185,
+      "stability": 0.0,
+      "dimension": "Agents",
+      "name": "Preferred cues for conveying emotional state"
+    },
+    {
+      "id": "SET_TIM_015",
+      "rank": 22,
+      "importance": 179,
+      "stability": 0.0,
+      "dimension": "Setting",
+      "name": "Temporal Setting Specificity"
+    },
+    {
+      "id": "EVT_SCH_004",
+      "rank": 23,
+      "importance": 178,
+      "stability": 0.0,
+      "dimension": "Events",
+      "name": "Mode of resolution of the main event chain"
+    },
+    {
+      "id": "SIT_GEN_001",
+      "rank": 24,
+      "importance": 178,
+      "stability": 0.0,
+      "dimension": "Situatedness",
+      "name": "Primary Genre Category"
+    },
+    {
+      "id": "AGENT_ID_003",
+      "rank": 25,
+      "importance": 171,
+      "stability": 0.0,
+      "dimension": "Agents",
+      "name": "Proportion of named vs. unnamed characters"
+    },
+    {
+      "id": "AGENT_ATTR_021",
+      "rank": 26,
+      "importance": 168,
+      "stability": 0.0,
+      "dimension": "Agents",
+      "name": "Dominant trajectories of main character change"
+    },
+    {
+      "id": "STY_ALL_017",
+      "rank": 27,
+      "importance": 167,
+      "stability": 0.0,
+      "dimension": "Style",
+      "name": "Allusion density"
+    },
+    {
+      "id": "SOC_REL_013",
+      "rank": 28,
+      "importance": 159,
+      "stability": 0.0,
+      "dimension": "Social Networks",
+      "name": "Diversity of Communication Channels"
+    },
+    {
+      "id": "REV_SUR_003",
+      "rank": 29,
+      "importance": 157,
+      "stability": 0.0,
+      "dimension": "Revelation",
+      "name": "Depth of Recontextualization After Surprise"
+    },
+    {
+      "id": "PLT_CON_002",
+      "rank": 30,
+      "importance": 156,
+      "stability": 0.0,
+      "dimension": "Plot",
+      "name": "Core Conflict Types"
+    }
+  ]
+}
