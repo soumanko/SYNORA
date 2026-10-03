@@ -68,6 +68,7 @@ class NarrativeForgeGenerator:
             "metadata": {
                 "model": getattr(self.llm_provider, "model", "unknown"),
                 "provider": getattr(self.llm_provider, "provider", "unknown"),
+                **getattr(self.llm_provider, "last_metadata", {}),
                 "word_count": result.get("metadata", {}).get("word_count", 0)
             }
         }

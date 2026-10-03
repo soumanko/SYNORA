@@ -89,7 +89,8 @@ class NarrativeLensAnalyzer:
                 "feature_coverage": {
                     "analyzed": 30 if mode == "core" else 304,
                     "total": 304
-                }
+                },
+                "llm": getattr(self.feature_extractor.llm_provider, "last_metadata", {})
             }
         )
         

@@ -77,5 +77,6 @@ class RevisionAgent:
             "draft": result.get("draft", ""),
             "word_count": result.get("word_count", 0),
             "revision_summary": result.get("revision_summary", ""),
-            "applied_targets": targets
+            "applied_targets": targets,
+            "metadata": getattr(self.llm_provider, "last_metadata", {})
         }

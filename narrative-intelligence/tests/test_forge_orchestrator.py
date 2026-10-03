@@ -11,7 +11,7 @@ def _mock_dependencies():
     
     lens = MagicMock()
     prof = MagicMock()
-    prof.dict.return_value = {"document_id": "fake_prof", "core30_features": [], "metadata": {}}
+    prof.dict.return_value = {"document_id": "fake_prof", "core30_features": {"document_id": "fake", "features": []}, "metadata": {}}
     lens.analyze_document.return_value = prof
     
     core30 = MagicMock()

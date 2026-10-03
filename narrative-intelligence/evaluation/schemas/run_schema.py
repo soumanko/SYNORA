@@ -25,6 +25,13 @@ class EvaluationRun(BaseModel):
     system: str
     provider: str
     model: str
+    generation_provider: str = ""
+    generation_model: str = ""
+    analysis_provider: str = ""
+    analysis_model: str = ""
+    fallback_used: bool = False
+    fallback_count: int = 0
+    provider_log: List[Dict[str, Any]] = []
     generation_config: Dict[str, Any]
     analysis_mode: str
     core30_source: str
@@ -35,3 +42,4 @@ class EvaluationRun(BaseModel):
     errors: List[str]
     started_at: str
     completed_at: str
+

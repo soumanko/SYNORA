@@ -3,12 +3,14 @@ experiment:
   version: "1.0"
 
 generation:
-  provider: gemini
-  model: gemini-3.5-flash-lite
+  provider: groq
+  model: openai/gpt-oss-120b
   temperature: 0.7
   max_output_tokens: 1024
 
 analysis:
+  provider: gemini
+  model: gemini-3.5-flash-lite
   mode: core
   core30_source: data/storyscope/core30_approximation.json
 
